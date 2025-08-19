@@ -1,13 +1,9 @@
 import renderCadastroPage from "./pages/Cadastro.js";
 import renderLoginPage from "./pages/login.js";
 
-document.addEventListener(
-    'DOMContentLoaded', () => {
+if (window.location.pathname.endsWith('Cadastro.html')) {
     renderCadastroPage();
-});
-
-
-/*document.addEventListener(
-    'DOMContentLoaded', () => {
+}
+else if (window.location.pathname.endsWith('login.html')) {
     renderLoginPage();
-});*/
+}

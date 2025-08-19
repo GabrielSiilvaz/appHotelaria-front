@@ -14,7 +14,7 @@ export default function renderLoginPage(){
     divRoot.innerHTML = '';
 
     const titulo = document.createElement('h2');
-    titulo.textContent = 'faça o login ou crie uma conta';
+    titulo.textContent = 'Login';
     titulo.className = 'titulo'
 
 
@@ -25,10 +25,15 @@ export default function renderLoginPage(){
     container.style.width = '100%'; //Aplicada a largura de 100% na div container para ocupar a tela
     container.style.maxWidth = '400px'; //Até que atinja o máximo de 400px
    
-    divRoot.appendChild(container); //divRoot contém a nova div
-
     const formulario = LoginForm();
-
+    const btnCadastrar = document.createElement('button');
+    btnCadastrar.href = 'Cadastro.html';
+    btnCadastrar.textContent = "Crie uma conta";
+    btnCadastrar.className = 'btn btn-link mt-2 text-center';
+   
     container.appendChild(titulo);
     container.appendChild(formulario); //Nova div container, já dentro de divRoot, contém o form
+    divRoot.appendChild(container); //divRoot contém a nova div
+    formulario.appendChild(btnCadastrar); //Adiciona o botão de cadastro ao formulário
+
 }
