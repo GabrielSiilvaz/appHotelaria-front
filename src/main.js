@@ -1,9 +1,25 @@
 import renderCadastroPage from "./pages/Cadastro.js";
+import renderHomePage from "./pages/home.js";
 import renderLoginPage from "./pages/login.js";
-
-if (window.location.pathname.endsWith('Cadastro.html')) {
-    renderCadastroPage();
+ 
+const routes = {
+    "/login": renderLoginPage,
+    "/cadastro": renderCadastroPage,
+    "/home" : renderHomePage
+};
+ 
+function getPath(){
+    const url = (location.hash || "").replace(/^#/, "").trim();
+    return url && url.startsWith("/") ? url : "/home";
 }
-else if (window.location.pathname.endsWith('login.html')) {
-    renderLoginPage();
+ 
+function renderRoute() {
+    const url = getPath();
+    const render = routes[url] || routes["/home"];
+    render();
 }
+ 
+window.addEventListener("hashchange", renderRoute);
+ 
+window.addEventListener('DOMContentLoaded', renderRoute);
+ 

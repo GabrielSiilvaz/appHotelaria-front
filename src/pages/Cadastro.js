@@ -36,14 +36,21 @@ export default function renderCadastroPage() {
 
 
     const formulario = LoginForm();
-    
 
     const btnRegister = formulario.querySelector('button');
     btnRegister.textContent = "Criar conta ";
+    
+    const confSenha = document.createElement('input');
+    confSenha.placeholder = ("Confirme sua senha");
 
+     btnVoltar.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.location.href = '#/login';
+    });
 
     container.appendChild(titulo);
     container.appendChild(nome); // Adiciona o input de nome ao container
+    formulario.querySelector('input[type="password"]').after(confSenha); // Adiciona o input de confirmação de senha após o input de senha existente
     container.appendChild(formulario); // Nova div container, já dentro de divRoot, contém o form
     container.appendChild(btnVoltar); // Adiciona o botão de voltar ao container
 }
